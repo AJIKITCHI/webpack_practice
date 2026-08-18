@@ -4,12 +4,13 @@
 
 const KEY = 'calorie-coach:v1';
 
+/** 初回起動時に設定タブへ入れておく値。使う人が変わったらここを書き換える。 */
 export const DEFAULT_PROFILE = {
   sex: 'male',
-  age: 35,
-  heightCm: 170,
-  weightKg: 70,
-  targetWeightKg: 65,
+  age: 26,
+  heightCm: 179,
+  weightKg: 80,
+  targetWeightKg: 71, // BMI 22.2。標準体重は 70.5kg
   activity: 'sedentary',
   pace: 'standard',
   adjustment: 0,

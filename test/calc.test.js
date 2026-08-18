@@ -10,6 +10,7 @@ import {
   standardWeight,
   sumEntries,
 } from '../src/modules/calc.js';
+import { DEFAULT_PROFILE } from '../src/modules/storage.js';
 
 const profile = {
   sex: 'male',
@@ -109,6 +110,18 @@ test('食事の合計と残量', () => {
 
 test('空の記録でも落ちない', () => {
   assert.deepEqual(sumEntries(), { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+});
+
+test('初期プロフィールの目標値を固定する', () => {
+  // calc.js の係数や下限を触ったときに、目標カロリーが黙って変わるのを防ぐ
+  const plan = buildPlan(DEFAULT_PROFILE);
+  assert.equal(plan.bmr, 1794);
+  assert.equal(plan.tdee, 2153);
+  assert.equal(plan.targetKcal, 1653);
+  assert.deepEqual(plan.macros, { protein: 128, fat: 48, carbs: 177 });
+  assert.equal(plan.clamped, false, '摂取下限には当たらない');
+  assert.equal(plan.shortfall, 0);
+  assert.equal(plan.forecast.kgPerWeek, 0.49);
 });
 
 test('BMI と標準体重', () => {
