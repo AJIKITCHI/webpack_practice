@@ -33,6 +33,8 @@ export const FOODS = [
   { id: 'mochi', name: '切り餅 1個', cat: '主食', unit: '50g', kcal: 112, p: 2.0, f: 0.3, c: 25.4, tags: ['carb'] },
   { id: 'cereal', name: 'シリアル（グラノーラ）', cat: '主食', unit: '40g', kcal: 176, p: 3.0, f: 5.8, c: 30.0, tags: ['carb', 'sweet'] },
   { id: 'sweetpotato', name: 'さつまいも（蒸し）', cat: '主食', unit: '150g', kcal: 198, p: 1.8, f: 0.3, c: 47.0, tags: ['carb', 'fiber'] },
+  { id: 'mugi_rice', name: 'もち麦ごはん（茶碗1杯）', cat: '主食', unit: '150g', kcal: 220, p: 4.5, f: 0.7, c: 50.0, tags: ['carb', 'fiber'] },
+  { id: 'naan', name: 'ナン 1枚', cat: '主食', unit: '1枚', kcal: 260, p: 8.0, f: 5.0, c: 46.0, tags: ['carb'] },
 
   // ---- 主菜 ----
   { id: 'chicken_breast', name: '鶏むね肉 皮なし', cat: '主菜', unit: '100g', kcal: 105, p: 23.3, f: 1.9, c: 0.1, tags: ['protein'] },
@@ -54,6 +56,12 @@ export const FOODS = [
   { id: 'natto', name: '納豆 1パック', cat: '主菜', unit: '45g', kcal: 90, p: 7.4, f: 4.5, c: 5.4, tags: ['protein', 'fiber'] },
   { id: 'tofu_momen', name: '木綿豆腐 half丁', cat: '主菜', unit: '150g', kcal: 110, p: 10.5, f: 6.9, c: 2.3, tags: ['protein'] },
   { id: 'tofu_kinu', name: '絹ごし豆腐 half丁', cat: '主菜', unit: '150g', kcal: 84, p: 8.0, f: 5.3, c: 2.7, tags: ['protein'] },
+  { id: 'mabo_light', name: '麻婆豆腐（木綿豆腐300g＋鶏ももひき肉80g）', cat: '主菜', unit: '1人前', kcal: 365, p: 37.5, f: 18.6, c: 13.0, tags: ['protein'] },
+  { id: 'mabo', name: '麻婆豆腐（絹豆腐＋豚ひき肉）', cat: '主菜', unit: '1人前', kcal: 427, p: 31.7, f: 29.4, c: 15.0, tags: ['protein', 'highfat'] },
+  { id: 'yakiniku_akami', name: '焼肉 赤身セット（牛もも150g＋鶏もも皮なし100g＋タレ）', cat: '主菜', unit: '1人前', kcal: 446, p: 51.0, f: 19.4, c: 8.0, tags: ['protein'] },
+  { id: 'karubi', name: '焼肉 カルビ（牛バラ）', cat: '主菜', unit: '100g', kcal: 470, p: 11.0, f: 50.0, c: 0.3, tags: ['protein', 'highfat'] },
+  { id: 'ajitama', name: '味玉', cat: '主菜', unit: '1個', kcal: 80, p: 7.0, f: 5.0, c: 1.0, tags: ['protein'] },
+  { id: 'chashu', name: 'チャーシュー 2枚', cat: '主菜', unit: '2枚', kcal: 120, p: 10.0, f: 8.0, c: 1.0, tags: ['protein', 'highfat'] },
 
   // ---- 副菜 ----
   { id: 'greensalad', name: '葉物サラダ（ドレなし）', cat: '副菜', unit: '100g', kcal: 14, p: 0.8, f: 0.1, c: 2.3, tags: ['veg', 'fiber'] },
@@ -68,6 +76,7 @@ export const FOODS = [
   { id: 'kimchi', name: 'キムチ', cat: '副菜', unit: '50g', kcal: 23, p: 1.2, f: 0.1, c: 3.9, tags: ['veg', 'fiber', 'salty'] },
   { id: 'edamame', name: '枝豆（可食部）', cat: '副菜', unit: '50g', kcal: 63, p: 5.9, f: 3.1, c: 4.2, tags: ['veg', 'fiber', 'protein'] },
   { id: 'potatosalad', name: 'ポテトサラダ', cat: '副菜', unit: '80g', kcal: 133, p: 1.3, f: 9.2, c: 11.4, tags: ['highfat'] },
+  { id: 'yakiniku_veg', name: '焼き野菜（キャベツ・きのこ・玉ねぎ）', cat: '副菜', unit: '150g', kcal: 55, p: 3.0, f: 0.4, c: 11.0, tags: ['veg', 'fiber'] },
 
   // ---- 汁物 ----
   { id: 'miso', name: 'みそ汁 1杯', cat: '汁物', unit: '180ml', kcal: 40, p: 3.0, f: 1.2, c: 4.5, tags: ['salty'] },
@@ -77,6 +86,7 @@ export const FOODS = [
 
   // ---- 乳製品・卵 ----
   { id: 'egg', name: '卵 1個', cat: '乳製品・卵', unit: '50g', kcal: 71, p: 6.1, f: 5.1, c: 0.2, tags: ['protein'] },
+  { id: 'medamayaki', name: '目玉焼き（卵1個・油少々）', cat: '乳製品・卵', unit: '1個', kcal: 96, p: 6.1, f: 7.6, c: 0.2, tags: ['protein'] },
   { id: 'milk', name: '牛乳 200ml', cat: '乳製品・卵', unit: '200ml', kcal: 134, p: 6.6, f: 7.6, c: 9.6, tags: ['protein'] },
   { id: 'milk_low', name: '低脂肪乳 200ml', cat: '乳製品・卵', unit: '200ml', kcal: 92, p: 7.6, f: 2.0, c: 11.0, tags: ['protein'] },
   { id: 'soymilk', name: '無調整豆乳 200ml', cat: '乳製品・卵', unit: '200ml', kcal: 92, p: 7.2, f: 4.0, c: 6.2, tags: ['protein'] },
@@ -137,6 +147,10 @@ export const FOODS = [
   { id: 'kake_soba', name: 'かけそば', cat: '外食・コンビニ', unit: '1杯', kcal: 300, p: 12.0, f: 2.0, c: 57.0, tags: ['carb', 'salty'] },
   { id: 'teishoku_fish', name: '焼き魚定食', cat: '外食・コンビニ', unit: '1食', kcal: 600, p: 30.0, f: 15.0, c: 85.0, tags: ['carb', 'protein'] },
   { id: 'pizza', name: 'ピザ 2切れ', cat: '外食・コンビニ', unit: '2切れ', kcal: 480, p: 20.0, f: 22.0, c: 50.0, tags: ['highfat', 'salty'] },
+  // 牛丼チェーン・インド料理店の値は各社公表値をもとにした概算
+  { id: 'matsuya_nami', name: '松屋 牛めし 並盛', cat: '外食・コンビニ', unit: '1杯', kcal: 700, p: 24.0, f: 21.0, c: 97.0, tags: ['carb', 'salty'] },
+  { id: 'matsuya_oomori', name: '松屋 牛めし 大盛', cat: '外食・コンビニ', unit: '1杯', kcal: 900, p: 30.0, f: 27.0, c: 125.0, tags: ['carb', 'salty', 'highfat'] },
+  { id: 'chicken_curry', name: 'チキンカレー（インド料理店）', cat: '外食・コンビニ', unit: '1人前', kcal: 400, p: 25.0, f: 25.0, c: 18.0, tags: ['protein', 'highfat'] },
 
   // ---- 調味料 ----
   { id: 'mayo', name: 'マヨネーズ 大さじ1', cat: '調味料', unit: '12g', kcal: 80, p: 0.2, f: 9.0, c: 0.2, tags: ['highfat'] },
