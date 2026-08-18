@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <!-- viewport-fit=cover: ノッチ／ホームインジケータの下まで背景を伸ばす -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="食事制限メインでぽっこりお腹を落とすためのカロリー管理アプリ" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./icon-180.png" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+
+    <!-- ホーム画面から全画面で起動する。iOS は manifest より下の指定を見る -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="カロリー" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)" />
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

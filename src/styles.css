@@ -1,0 +1,176 @@
+:root {
+  --bg: #0f1115;
+  --panel: #181b22;
+  --panel-2: #21252e;
+  --line: #2c313c;
+  --text: #e8eaed;
+  --muted: #98a1b3;
+  --accent: #4ade80;
+  --accent-dim: #1f6f45;
+  --warn: #fbbf24;
+  --alert: #f87171;
+  --info: #60a5fa;
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f5f6f8;
+    --panel: #ffffff;
+    --panel-2: #eef0f4;
+    --line: #dde1e8;
+    --text: #1a1d23;
+    --muted: #5f6875;
+    --accent: #16a34a;
+    --accent-dim: #bbf7d0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  /* タップ時の青い矩形と、全画面起動時のバウンススクロールを抑える */
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+/* ホーム画面から全画面で起動したとき、ノッチとホームインジケータを避ける */
+#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: env(safe-area-inset-top) calc(16px + env(safe-area-inset-right))
+    calc(96px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+}
+
+header.app-header {
+  padding: 20px 0 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+header.app-header h1 { font-size: 20px; margin: 0; letter-spacing: 0.02em; }
+header.app-header .date { color: var(--muted); font-size: 13px; }
+
+nav.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: var(--panel-2);
+  padding: 5px;
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  position: sticky;
+  top: calc(8px + env(safe-area-inset-top));
+  z-index: 5;
+}
+nav.tabs button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 9px 4px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+nav.tabs button.active { background: var(--panel); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.card h2 { font-size: 14px; margin: 0 0 12px; color: var(--muted); font-weight: 600; letter-spacing: .04em; }
+
+.big-number { display: flex; align-items: baseline; gap: 8px; }
+.big-number strong { font-size: 40px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.big-number span { color: var(--muted); font-size: 13px; }
+.big-number.over strong { color: var(--alert); }
+
+.bar { height: 10px; background: var(--panel-2); border-radius: 999px; overflow: hidden; margin: 10px 0 4px; }
+.bar > i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s ease; }
+.bar.over > i { background: var(--alert); }
+
+.macro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.macro { background: var(--panel-2); border-radius: 10px; padding: 10px 12px; }
+.macro b { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+.macro .val { font-size: 17px; font-variant-numeric: tabular-nums; }
+.macro .val small { color: var(--muted); font-size: 12px; }
+
+.stat-row { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: 13px; }
+.stat-row b { color: var(--text); font-variant-numeric: tabular-nums; }
+
+.tip { border-left: 3px solid var(--info); background: var(--panel-2); padding: 10px 12px; border-radius: 0 8px 8px 0; margin-bottom: 8px; }
+.tip.alert { border-color: var(--alert); }
+.tip.warn { border-color: var(--warn); }
+.tip.good { border-color: var(--accent); }
+.tip .t { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+.tip .b { font-size: 13px; color: var(--muted); }
+
+.meal-block { margin-bottom: 14px; }
+.meal-block > .head { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-bottom: 6px; }
+.entry { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px; }
+.entry .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.entry .amt { color: var(--muted); font-size: 12px; }
+.entry .kcal { font-variant-numeric: tabular-nums; width: 68px; text-align: right; }
+.entry button { background: transparent; border: 0; color: var(--muted); cursor: pointer; font-size: 16px; padding: 0 2px; }
+.entry button:hover { color: var(--alert); }
+.empty { color: var(--muted); font-size: 13px; padding: 6px 0; }
+
+label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+input, select, textarea, button.btn {
+  width: 100%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px;
+  /* 16px 未満だと iOS がフォーカス時に画面を勝手に拡大するので下げない */
+  font-size: 16px;
+  font-family: inherit;
+}
+input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.field { margin-bottom: 12px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+button.btn { cursor: pointer; font-weight: 600; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #08130c; }
+@media (prefers-color-scheme: light) { button.primary { color: #fff; } }
+button.ghost { background: transparent; }
+.btn-row { display: flex; gap: 8px; }
+
+.food-list { max-height: 320px; overflow-y: auto; margin-top: 10px; }
+.food-item { display: flex; align-items: center; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.food-item:hover { background: var(--panel-2); }
+.food-item .name { flex: 1; font-size: 14px; }
+.food-item .name small { display: block; color: var(--muted); font-size: 11px; }
+.food-item .kcal { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip { background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 5px 11px; font-size: 12px; cursor: pointer; font-family: inherit; }
+.chip.active { background: var(--accent-dim); color: var(--text); border-color: transparent; }
+
+table.log { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.log th, table.log td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+table.log td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.chart { width: 100%; height: 160px; }
+.chart .line { fill: none; stroke: var(--accent); stroke-width: 2; }
+.chart .trend { fill: none; stroke: var(--info); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.chart .dot { fill: var(--accent); }
+.chart .axis { stroke: var(--line); stroke-width: 1; }
+.chart text { fill: var(--muted); font-size: 10px; }
+
+.note { font-size: 12px; color: var(--muted); }
+.hidden { display: none; }
