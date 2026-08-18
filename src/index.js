@@ -572,3 +572,13 @@ app.addEventListener('change', (e) => {
 });
 
 render();
+
+// 圏外・機内モードでも起動できるようにする。
+// ローカル開発（http）では登録しない — 古いキャッシュを掴んだまま開発する事故を防ぐため。
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {
+      /* 登録できなくてもアプリ自体は動くので黙って続行する */
+    });
+  });
+}

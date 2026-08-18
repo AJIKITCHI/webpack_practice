@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!--
+    ホーム画面用アイコンの原本。
+    iOS は追加時に自前で角丸マスクをかけるので、角は丸めずフルブリードで描く。
+    図柄は「その日の残りカロリー」を表すリング（アプリ本体のバーと同じ意味）。
+  -->
+  <rect width="512" height="512" fill="#16a34a" />
+  <g fill="none" stroke="#ffffff" stroke-linecap="round">
+    <circle cx="256" cy="256" r="150" stroke-opacity="0.28" stroke-width="44" />
+    <!-- 12時方向から時計回りに72%（残り3割）を白で描く -->
+    <path d="M 256 106 A 150 150 0 1 1 108.7 284.1" stroke-width="44" />
+  </g>
+</svg>

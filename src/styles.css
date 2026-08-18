@@ -35,9 +35,19 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  /* タップ時の青い矩形と、全画面起動時のバウンススクロールを抑える */
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
 }
 
-#app { max-width: 720px; margin: 0 auto; padding: 0 16px 96px; }
+/* ホーム画面から全画面で起動したとき、ノッチとホームインジケータを避ける */
+#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: env(safe-area-inset-top) calc(16px + env(safe-area-inset-right))
+    calc(96px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+}
 
 header.app-header {
   padding: 20px 0 12px;
@@ -58,7 +68,7 @@ nav.tabs {
   border-radius: var(--radius);
   margin-bottom: 18px;
   position: sticky;
-  top: 8px;
+  top: calc(8px + env(safe-area-inset-top));
   z-index: 5;
 }
 nav.tabs button {
@@ -126,7 +136,8 @@ input, select, textarea, button.btn {
   color: var(--text);
   border-radius: 8px;
   padding: 10px;
-  font-size: 15px;
+  /* 16px 未満だと iOS がフォーカス時に画面を勝手に拡大するので下げない */
+  font-size: 16px;
   font-family: inherit;
 }
 input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }

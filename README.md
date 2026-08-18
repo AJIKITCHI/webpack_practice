@@ -28,6 +28,47 @@ npm test         # 計算ロジックとコーチのルールのテスト
 初期値はリポジトリ所有者の体格で埋めてある。別の人が使うときは設定タブで上書きするか、
 `src/modules/storage.js` の `DEFAULT_PROFILE` を書き換える。
 
+## iPhone で使う
+
+ホーム画面に置いて、ネイティブアプリと同じように全画面で起動できる。圏外でも立ち上がる。
+
+### 1. Cloudflare Pages に公開する（最初の1回だけ）
+
+Cloudflare ダッシュボード → **Workers & Pages** → **Create** → **Pages** →
+**Connect to Git** → このリポジトリを選び、以下を設定して Save and Deploy。
+
+| 項目 | 値 |
+| --- | --- |
+| Production branch | `master` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+
+Node のバージョンは `.node-version` で 22 に固定してある。
+以降は `master` に push するたびに自動でデプロイされ、`https://<プロジェクト名>.pages.dev` で開ける。
+
+### 2. ホーム画面に追加する
+
+**順番が大事。** iOS ではホーム画面から起動したアプリと Safari とで保存領域が分かれることがあるため、
+先にホーム画面に追加し、**そのアイコンから開いて**設定を入力する。Safari で先に入力すると、
+アイコンから開いたときに記録が空に見える場合がある。
+
+1. Safari で `https://<プロジェクト名>.pages.dev` を開く
+2. 共有ボタン → **ホーム画面に追加**
+3. 追加されたアイコンをタップして起動し、「設定」タブで体格を保存する
+
+### オフライン動作
+
+Service Worker（`public/sw.js`）が一度読んだファイルをキャッシュするので、
+2回目以降は圏外・機内モードでも起動して記録できる。
+確認するには、一度起動したあとに機内モードにしてアイコンから開き直す。
+
+表示が古いまま直らないときは `public/sw.js` の `CACHE` の版番号を上げて再デプロイすると全入れ替えになる。
+
+### バックアップ
+
+記録は端末のブラウザ内にしか無い。端末の変更やデータ消去で消えるので、
+ときどき「設定」タブの **バックアップを保存** で JSON を書き出しておく。
+
 ## 計算の中身
 
 すべて `src/modules/calc.js` にあり、テストで固定してある。
@@ -80,6 +121,10 @@ npm test         # 計算ロジックとコーチのルールのテスト
 ## 構成
 
 ```
+public/               webpack が加工せずそのまま配る静的ファイル
+  manifest.webmanifest  PWA の定義（アイコン・全画面表示）
+  sw.js                 Service Worker（オフライン起動）
+  icon.svg / icon-*.png ホーム画面アイコン
 src/
   index.js            画面の組み立てとイベント処理
   index.html          テンプレート
